@@ -12,3 +12,7 @@ const StickySchema = new Schema({
         default: Date.now,
     }
 });
+
+const Sticky = mongoose.model("sticky", StickySchema);
+
+module.exports = Sticky;
