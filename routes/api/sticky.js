@@ -11,6 +11,7 @@ router.get("/api/sticky", (req, res) => {
     Sticky.find()
         .sort({date: -1})
         .then(sticky => res.json(sticky))
+        .catch(err => console.error(err));
 });
 
 // @route POST api/sticky

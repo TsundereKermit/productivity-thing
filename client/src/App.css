@@ -1,0 +1,9 @@
+.divider-h {
+    width: 5px;
+    height: auto;
+    display: inline-block;
+}
+
+Container {
+    max-width: 100%
+}
