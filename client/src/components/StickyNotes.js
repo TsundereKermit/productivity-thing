@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
-import {v4 as uuid} from 'uuid';
 import {connect} from 'react-redux';
-import {getStickyNotes} from  '../actions/stickyNoteActions';
+import {getStickyNotes, deleteStickyNotes} from  '../actions/stickyNoteActions';
 import PropTypes from 'prop-types';
 
 class StickyNotes extends Component {
@@ -57,4 +56,4 @@ const mapStateToProps = state => ({
     stickyNotes: state.sticky
 });
 
-export default connect(mapStateToProps, {getStickyNotes})(StickyNotes);
+export default connect(mapStateToProps, {getStickyNotes, deleteStickyNotes})(StickyNotes);

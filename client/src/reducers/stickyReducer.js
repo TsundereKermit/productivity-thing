@@ -15,6 +15,10 @@ export default (state = initialState, action) => {
         case GET_STICKYNOTES:
             const sticky = [...state.sticky];
             return {sticky};
+        case DELETE_STICKYNOTE:
+            return {
+                //Todo
+            }
         default:
             return state;
     }

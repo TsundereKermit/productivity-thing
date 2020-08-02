@@ -5,3 +5,10 @@ export const getStickyNotes = () => {
         type: GET_STICKYNOTES,
     }
 }
+
+export const deleteStickyNotes = id => {
+    return {
+        type: DELETE_STICKYNOTE,
+        payload: id
+    }
+}
