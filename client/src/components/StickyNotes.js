@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
 import {Container, ListGroup, ListGroupItem, Button} from 'reactstrap';
 import {v4 as uuid} from 'uuid';
+import {connect} from 'react-redux';
+import {getStickyNotes} from  '../actions/stickyNoteActions';
+import PropTypes from 'prop-types';
 
 class StickyNotes extends Component {
-    state = {
-        sticky: [
-            { id: uuid(), content: "haha what if i put" },
-            { id: uuid(), content: "my minecraft bed" },
-            { id: uuid(), content: "next to yours" },
-            { id: uuid(), content: "jk... unless?" },
-        ]
+    componentDidMount() {
+        this.props.getStickyNotes();
     }
 
     render() {
-        const {sticky} = this.state;
-
+        const {stickyNotes} = this.props.stickyNotes;
+        console.log(this.props);
         return (
             <Container className="mx-0" fluid>
                 <Button 
@@ -30,7 +28,7 @@ class StickyNotes extends Component {
                     Add sticky note
                 </Button>
                 <ListGroup>
-                    {sticky.map(({ id, content }) => (
+                    {stickyNotes.map(({ id, content }) => (
                         <ListGroupItem key={id}>
                             {content}
                             <Button 
@@ -51,4 +49,13 @@ class StickyNotes extends Component {
     }
 }
 
-export default StickyNotes;
+// StickyNotes.propTypes = {
+//     getStickyNotes: PropTypes.func.isRequired,
+//     stickyNotes: PropTypes.object.isRequired
+// }
+
+const mapStateToProps = state => ({
+    stickyNotes: state.stickyNotes
+});
+
+export default connect(mapStateToProps, {getStickyNotes})(StickyNotes);
