@@ -11,9 +11,7 @@ class StickyNotes extends Component {
     }
 
     render() {
-        const {sticky} = this.props.sticky;
-        console.log(this.props);
-        console.log(sticky);
+        const {sticky} = this.props.stickyNotes;
         return (
             <Container className="mx-0" fluid>
                 <Button 
@@ -50,13 +48,13 @@ class StickyNotes extends Component {
     }
 }
 
-// StickyNotes.propTypes = {
-//     getStickyNotes: PropTypes.func.isRequired,
-//     stickyNotes: PropTypes.object.isRequired
-// }
+StickyNotes.propTypes = {
+    getStickyNotes: PropTypes.func.isRequired,
+    stickyNotes: PropTypes.object.isRequired
+}
 
 const mapStateToProps = state => ({
-    sticky: state.sticky
+    stickyNotes: state.sticky
 });
 
 export default connect(mapStateToProps, {getStickyNotes})(StickyNotes);
