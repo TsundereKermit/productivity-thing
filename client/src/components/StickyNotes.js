@@ -11,8 +11,9 @@ class StickyNotes extends Component {
     }
 
     render() {
-        const {stickyNotes} = this.props.stickyNotes;
+        const {sticky} = this.props.sticky;
         console.log(this.props);
+        console.log(sticky);
         return (
             <Container className="mx-0" fluid>
                 <Button 
@@ -28,7 +29,7 @@ class StickyNotes extends Component {
                     Add sticky note
                 </Button>
                 <ListGroup>
-                    {stickyNotes.map(({ id, content }) => (
+                    {sticky.map(({ id, content }) => (
                         <ListGroupItem key={id}>
                             {content}
                             <Button 
@@ -55,7 +56,7 @@ class StickyNotes extends Component {
 // }
 
 const mapStateToProps = state => ({
-    stickyNotes: state.stickyNotes
+    sticky: state.sticky
 });
 
 export default connect(mapStateToProps, {getStickyNotes})(StickyNotes);

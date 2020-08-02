@@ -13,7 +13,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch(action.type) {
         case GET_STICKYNOTES:
-            return {...state.stickyNotes};
+            return {...state.sticky};
         default:
             return state;
     }
