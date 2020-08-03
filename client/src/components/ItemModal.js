@@ -11,7 +11,6 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addStickyNote } from "../actions/stickyNoteActions";
-import { v4 as uuid } from "uuid";
 
 class ItemModal extends Component {
   state = {
@@ -35,7 +34,6 @@ class ItemModal extends Component {
     e.preventDefault();
 
     const newStickyNote = {
-      id: uuid(),
       content: this.state.note,
     };
 

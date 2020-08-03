@@ -21,14 +21,14 @@ class StickyNotes extends Component {
     return (
       <Container className="mx-0" fluid>
         <ListGroup>
-          {sticky.map(({ id, content }) => (
-            <ListGroupItem key={id}>
+          {sticky.map(({ _id, content }) => (
+            <ListGroupItem key={_id}>
               {content}
               <Button
                 className="remove-btn float-right"
                 color="danger"
                 size="sm"
-                onClick={this.onDeleteClick.bind(this, id)}
+                onClick={this.onDeleteClick.bind(this, _id)}
               >
                 Delete
               </Button>

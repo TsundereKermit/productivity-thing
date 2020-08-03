@@ -1,31 +1,38 @@
-import { v4 as uuid } from "uuid";
 import {
   GET_STICKYNOTES,
   ADD_STICKYNOTE,
   DELETE_STICKYNOTE,
+  STICKYNOTES_LOADING,
 } from "../actions/types";
 
 const initialState = {
-  sticky: [
-    { id: uuid(), content: "haha what if i put" },
-    { id: uuid(), content: "my minecraft bed" },
-    { id: uuid(), content: "next to yours" },
-    { id: uuid(), content: "jk... unless?" },
-  ],
+  sticky: [],
+  loading: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_STICKYNOTES:
-      const sticky = [...state.sticky];
-      return { sticky };
+      const sticky = [...action.payload];
+      return {
+        ...state,
+        sticky,
+        loading: false,
+      };
     case DELETE_STICKYNOTE:
       return {
-        sticky: state.sticky.filter((note) => note.id !== action.payload),
+        ...state,
+        sticky: state.sticky.filter((note) => note._id !== action.payload),
       };
     case ADD_STICKYNOTE:
       return {
-        sticky: [...state.sticky, action.payload],
+        ...state,
+        sticky: [action.payload, ...state.sticky],
+      };
+    case STICKYNOTES_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;
