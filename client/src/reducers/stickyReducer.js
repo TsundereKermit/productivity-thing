@@ -23,6 +23,10 @@ export default (state = initialState, action) => {
       return {
         sticky: state.sticky.filter((note) => note.id !== action.payload),
       };
+    case ADD_STICKYNOTE:
+      return {
+        sticky: [...state.sticky, action.payload],
+      };
     default:
       return state;
   }

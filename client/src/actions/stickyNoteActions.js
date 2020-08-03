@@ -12,3 +12,10 @@ export const deleteStickyNotes = (id) => {
     payload: id,
   };
 };
+
+export const addStickyNote = (note) => {
+  return {
+    type: ADD_STICKYNOTE,
+    payload: note,
+  };
+};

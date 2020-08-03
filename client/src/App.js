@@ -5,13 +5,18 @@ import AppNavbar from "./components/AppNavbar";
 import StickyNote from "./components/StickyNotes";
 import { Provider } from "react-redux";
 import store from "./store";
+import ItemModal from "./components/ItemModal";
+import { Container } from "reactstrap";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
         <AppNavbar />
-        <StickyNote />
+        <Container fluid>
+          <ItemModal />
+          <StickyNote />
+        </Container>
       </div>
     </Provider>
   );
