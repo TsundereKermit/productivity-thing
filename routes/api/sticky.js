@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../../middleware/auth");
 
 //Sticky model
 const Sticky = require("../../models/Sticky");
@@ -16,8 +17,8 @@ router.get("/api/sticky", (req, res) => {
 
 // @route POST api/sticky
 // @desc Create a sticky note
-// @access Public
-router.post("/api/sticky", (req, res) => {
+// @access Private
+router.post("/api/sticky", auth, (req, res) => {
   const newSticky = new Sticky({
     content: req.body.content,
   });
@@ -30,8 +31,8 @@ router.post("/api/sticky", (req, res) => {
 
 // @route DELETE api/sticky/:id
 // @desc Delete a sticky note
-// @access Public
-router.delete("/api/sticky/:id", (req, res) => {
+// @access Private
+router.delete("/api/sticky/:id", auth, (req, res) => {
   Sticky.findById(req.params.id)
     .then((sticky) => sticky.remove().then(res.json({ success: true })))
     .catch((err) => res.status(404).json({ success: false }));

@@ -1,4 +1,0 @@
-module.exports = {
-  mongoURI:
-    "mongodb+srv://TsundereKermit:xMGwuLU0Su4ifXpw@productivity-thing.ng4gt.mongodb.net/test?w=majority",
-};
