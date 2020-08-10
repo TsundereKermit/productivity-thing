@@ -5,7 +5,6 @@ import {
   getStickyNotes,
   deleteStickyNotes,
 } from "../actions/stickyNoteActions";
-import PropTypes from "prop-types";
 
 class StickyNotes extends Component {
   componentDidMount() {
@@ -39,11 +38,6 @@ class StickyNotes extends Component {
     );
   }
 }
-
-StickyNotes.propTypes = {
-  getStickyNotes: PropTypes.func.isRequired,
-  stickyNotes: PropTypes.object.isRequired,
-};
 
 const mapStateToProps = (state) => ({
   stickyNotes: state.sticky,
