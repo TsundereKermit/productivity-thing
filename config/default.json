@@ -1,4 +1,4 @@
 {
   "mongoURI": "mongodb+srv://TsundereKermit:xMGwuLU0Su4ifXpw@productivity-thing.ng4gt.mongodb.net/test?w=majority",
-  "jwtSecret": "sn_secret"
+  "jwtSecret": "sn_secretkey"
 }

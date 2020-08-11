@@ -5,6 +5,8 @@ import {
   STICKYNOTES_LOADING,
 } from "./types";
 import axios from "axios";
+import { tokenConfig } from "./authActions";
+import { returnErrors } from "./errorActions";
 
 export const getStickyNotes = () => (dispatch) => {
   dispatch(setStickyNoteLoading());
@@ -16,31 +18,37 @@ export const getStickyNotes = () => (dispatch) => {
         payload: res.data,
       })
     )
-    .catch((err) => console.error("You broke something\n" + err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
-export const addStickyNote = (note) => (dispatch) => {
+export const addStickyNote = (note) => (dispatch, getState) => {
   axios
-    .post("/api/sticky", note)
+    .post("/api/sticky", note, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: ADD_STICKYNOTE,
         payload: res.data,
       })
     )
-    .catch((err) => console.error("You broke something\n" + err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
-export const deleteStickyNotes = (id) => (dispatch) => {
+export const deleteStickyNotes = (id) => (dispatch, getState) => {
   axios
-    .delete(`/api/sticky/${id}`)
+    .delete(`/api/sticky/${id}`, tokenConfig(getState))
     .then((res) =>
       dispatch({
         type: DELETE_STICKYNOTE,
         payload: id,
       })
     )
-    .catch((err) => console.error("You broke something\n" + err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const setStickyNoteLoading = () => {

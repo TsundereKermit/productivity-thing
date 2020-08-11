@@ -5,13 +5,10 @@ const config = require("config");
 
 const app = express();
 
-//Body-parser middleware
 app.use(express.json());
 
-// MongoDB URI
 const db = config.get("mongoURI");
 
-//Connect to MongoDB
 mongoose
   .connect(db, {
     useNewUrlParser: true,

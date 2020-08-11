@@ -44,13 +44,20 @@ class ItemModal extends Component {
   render() {
     return (
       <div>
-        <Button
-          color="dark"
-          style={{ marginBottom: "2rem", marginLeft: "1rem" }}
-          onClick={this.toggle}
-        >
-          Add Sticky Note
-        </Button>
+        {this.props.isAuthenticated ? (
+          <Button
+            color="dark"
+            style={{ marginBottom: "2rem", marginLeft: "1rem" }}
+            onClick={this.toggle}
+          >
+            Add Sticky Note
+          </Button>
+        ) : (
+          <h4 className="mb-3 ml-4">
+            Please login to create or delete sticky note
+          </h4>
+        )}
+
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>
             Add a sticky note to the board
@@ -79,6 +86,7 @@ class ItemModal extends Component {
 
 const mapStateToProps = (state) => ({
   stickyNotes: state.sticky,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { addStickyNote })(ItemModal);

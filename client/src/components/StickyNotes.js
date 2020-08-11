@@ -23,14 +23,16 @@ class StickyNotes extends Component {
           {sticky.map(({ _id, content }) => (
             <ListGroupItem key={_id}>
               {content}
-              <Button
-                className="remove-btn float-right"
-                color="danger"
-                size="sm"
-                onClick={this.onDeleteClick.bind(this, _id)}
-              >
-                Delete
-              </Button>
+              {this.props.isAuthenticated ? (
+                <Button
+                  className="remove-btn float-right"
+                  color="danger"
+                  size="sm"
+                  onClick={this.onDeleteClick.bind(this, _id)}
+                >
+                  Delete
+                </Button>
+              ) : null}
             </ListGroupItem>
           ))}
         </ListGroup>
@@ -41,6 +43,7 @@ class StickyNotes extends Component {
 
 const mapStateToProps = (state) => ({
   stickyNotes: state.sticky,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { getStickyNotes, deleteStickyNotes })(
